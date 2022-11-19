@@ -36,6 +36,7 @@ def call(Map config) {
                         }                   
                         steps {
                             script{
+                               sh '''eval $(minikube docker-env)'''
                                 buildAndPush()
                             }
                         }
@@ -47,7 +48,8 @@ def call(Map config) {
                             DOCKER_SERVER = "$DOCKER_WINDOWS_SERVER"
                         }                        
                         steps {
-                            script {                                
+                            script {    
+                                sh '''eval $(minikube docker-env)'''
                                 buildAndPush()
                             }
                         }
